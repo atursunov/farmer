@@ -1,3 +1,22 @@
+Codes for Farmer Project
+
+git clone https://github.com/elleobrien/farmer.git
+
+pip install -r requirements.txt
+
+python get data
+
+python process_data.py
+
+python train.py
+
+dvc init -f
+
+dvc config core.analytics false
+
+dvc run -n get -d get_data.py -o data_raw.csv --no-exec python get_data.py
+
+# create dvc.yaml
 stages:
   get:
     cmd: python get_data.py
@@ -22,3 +41,6 @@ stages:
     metrics:
       - metrics.json:
           cache: false
+
+dvc repro
+
